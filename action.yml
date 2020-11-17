@@ -1,18 +1,8 @@
 name: "Checkout and install"
 description: "Checks out the repo and installs all the yarn dependencies"
-# inputs:
-#   ref:
-#     description: "The ref to check out"
-#     required: false
 runs:
   using: "composite"
     steps:
-      # - name: checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: ${{ inputs.ref }}
-      #     clean: false
-
       - name: setup node
         uses: actions/setup-node@v1
         with:
