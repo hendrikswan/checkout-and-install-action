@@ -2,23 +2,21 @@ name: "Checkout and install"
 description: "Checks out the repo and installs all the yarn dependencies"
 runs:
   using: "composite"
-    steps:
-      - name: setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+  steps:
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: "14.x"
 
-      - name: get node version
-        id: node-version
-        run: echo "::set-output name=value::$(node --version)"
+    - name: get node version
+      id: node-version
+      run: echo "::set-output name=value::$(node --version)"
 
-      - name: copy .npmrc template
-        uses: hendrikswan/cp-file-action@main
-        with:
-          from: 'build/.npmrc'
-          to: '.npmrc'
+    - name: copy .npmrc template
+      uses: hendrikswan/cp-file-action@main
+      with:
+        from: "build/.npmrc"
+        to: ".npmrc"
 
-      - name: install dependencies
-        run: yarn install --frozen-lockfile  --ignore-engines
-
-
+    - name: install dependencies
+      run: yarn install --frozen-lockfile  --ignore-engines
