@@ -22,6 +22,12 @@ runs:
         id: node-version
         run: echo "::set-output name=value::$(node --version)"
 
+      - name: copy .npmrc template
+        uses: hendrikswan/cp-file-action@main
+        with:
+          from: 'build/.npmrc'
+          to: '.npmrc'
+
       - name: install dependencies
         run: yarn install --frozen-lockfile  --ignore-engines
 
